@@ -15,6 +15,7 @@ import time
 import random
 import math
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -27,6 +28,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+st_autorefresh(interval=2000, key="hmi_main_refresh")
 
 # ── Custom CSS ───────────────────────────────────────────────────────────────
 st.markdown("""
@@ -291,5 +293,4 @@ with col_right:
         st.markdown(f"{icon} {name}")
 
 # ── Auto-refresh ─────────────────────────────────────────────────────────────
-time.sleep(refresh)
-st.rerun()
+
